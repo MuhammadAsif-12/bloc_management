@@ -10,34 +10,36 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          height: 150,
-          width: 150,
-          color: Colors.purple.shade500,
-          child: BlocConsumer<InternetBloc, InternetState>(
-            listener: (context, state) {
-              if (state is InternetGainedState) {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text('Internet Connect'),
-                  backgroundColor: Colors.green.shade300,
-                ));
-              }
-              else if (state is InternetLostState){
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text('Internet disconnect'),
-                  backgroundColor: Colors.blue.shade500,
-                ));
-              }
-            },
-            builder: (BuildContext context, state) {
-              if (state is InternetGainedState) {
-                return Text('Connected');
-              } else if (state is InternetLostState) {
-                return Text('Connectivity Lost');
-              } else {
-                return Text('Loading');
-              }
-            },
+        child: Center(
+          child: Container(
+            height: 100,
+            width: 100,
+            color: Colors.purple.shade500,
+            child: BlocConsumer<InternetBloc, InternetState>(
+              listener: (context, state) {
+                if (state is InternetGainedState) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Internet Connect'),
+                    backgroundColor: Colors.green.shade300,
+                  ));
+                }
+                else if (state is InternetLostState){
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Internet disconnect'),
+                    backgroundColor: Colors.blue.shade500,
+                  ));
+                }
+              },
+              builder: (BuildContext context, state) {
+                if (state is InternetGainedState) {
+                  return Text('Connected');
+                } else if (state is InternetLostState) {
+                  return Text('Connectivity Lost');
+                } else {
+                  return Text('Loading');
+                }
+              },
+            ),
           ),
         ),
       ),

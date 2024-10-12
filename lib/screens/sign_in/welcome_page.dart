@@ -1,3 +1,4 @@
+import 'package:bloc_management/screens/sign_in/sign_in_page.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -58,12 +59,15 @@ class WelcomePage extends StatelessWidget {
                     style: TextStyle(fontSize: 16, fontFamily: 'Rubik Regular'),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 250,
                 ),
                 InkWell(
                   onTap: () {
-
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignIn()),
+                    );
                   },
                   child: Container(
                     height: 50,
@@ -83,7 +87,7 @@ class WelcomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 InkWell(

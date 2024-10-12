@@ -69,52 +69,59 @@ class SignIn extends StatelessWidget {
                     TextStyle(fontSize: 16, fontFamily: 'Rubik Regular'),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 TextFormField(
                   decoration: InputDecoration(
                     hintText: 'Email',
-                    fillColor: Color(0xffF8F9FA),
+                    fillColor: const Color(0xffF8F9FA),
                     filled: true,
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       Icons.alternate_email,
                       color: Color(0xff323F4B),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xffE4E7EB)),
+                      borderSide: const BorderSide(color: Color(0xffE4E7EB)),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xffE4E7EB)),
+                      borderSide: const BorderSide(color: Color(0xffE4E7EB)),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 TextFormField(
                   decoration: InputDecoration(
-                      hintText: 'Passward',
-                      fillColor: Color(0xffF8F9FA),
-                      suffixIcon: Icon(Icons.visibility_off_outlined),
+                      hintText: 'Password',
+                      fillColor: const Color(0xffF8F9FA),
+                      suffixIcon: const Icon(Icons.visibility_off_outlined),
                       filled: true,
-                      prefixIcon: Icon(
+                      prefixIcon: const Icon(
                         Icons.lock_open,
                         color: Color(0xff323F4B),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xffE4E7EB)),
+                        borderSide: const BorderSide(color: Color(0xffE4E7EB)),
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xffE4E7EB)),
+                        borderSide: const BorderSide(color: Color(0xffE4E7EB)),
                         borderRadius: BorderRadius.circular(10.0),
                       )),
                 ),
+                const SizedBox(
+                  height: 15,
+                ),
+                const Text('Error will show up here', style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 12
+                ),),
 
-                SizedBox(
+                const SizedBox(
                   height: 250,
                 ),
                 InkWell(
@@ -123,7 +130,7 @@ class SignIn extends StatelessWidget {
                     height: 50,
                     width: 400,
                     decoration: BoxDecoration(
-                        color: Color(0xffF97038),
+                        color: const Color(0xffF97038),
                         borderRadius: BorderRadius.circular(10)),
                     child: const Center(
                       child: Text(
@@ -137,7 +144,7 @@ class SignIn extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 const Row(

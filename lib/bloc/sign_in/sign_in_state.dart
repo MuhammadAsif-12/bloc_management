@@ -1,6 +1,12 @@
-part of 'sign_in_bloc.dart';
+abstract class SignInState {}
 
-@immutable
-sealed class SignInState {}
+class SignInInitialState extends SignInState {}
 
-final class SignInInitial extends SignInState {}
+class SignInValidState extends SignInState {}
+
+class SignInErrorState extends SignInState {
+  String errorMessage;
+  SignInErrorState(this.errorMessage);
+}
+
+class SignInLoadingState extends SignInState {}

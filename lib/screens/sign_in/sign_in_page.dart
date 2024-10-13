@@ -1,7 +1,13 @@
+import 'package:bloc_management/bloc/sign_in/sign_in_bloc.dart';
+import 'package:bloc_management/bloc/sign_in/sign_in_event.dart';
+import 'package:bloc_management/bloc/sign_in/sign_in_state.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignIn extends StatelessWidget {
-  const SignIn({super.key});
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +60,7 @@ class SignIn extends StatelessWidget {
                 const Center(
                   child: Text(
                     'Login',
-                    style:
-                    TextStyle(fontSize: 30, fontFamily: 'Rubik Medium'),
+                    style: TextStyle(fontSize: 30, fontFamily: 'Rubik Medium'),
                   ),
                 ),
                 const SizedBox(
@@ -65,14 +70,18 @@ class SignIn extends StatelessWidget {
                   child: Text(
                     'Welcome to my flutter state management project with bloc',
                     textAlign: TextAlign.center,
-                    style:
-                    TextStyle(fontSize: 16, fontFamily: 'Rubik Regular'),
+                    style: TextStyle(fontSize: 16, fontFamily: 'Rubik Regular'),
                   ),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 TextFormField(
+                  controller: emailController,
+                  onChanged: (val) {
+                    BlocProvider.of<SignInBloc>(context).add(SignInChangedEvent(
+                        emailController.text, passwordController.text));
+                  },
                   decoration: InputDecoration(
                     hintText: 'Email',
                     fillColor: const Color(0xffF8F9FA),
@@ -95,6 +104,11 @@ class SignIn extends StatelessWidget {
                   height: 20,
                 ),
                 TextFormField(
+                  controller: passwordController,
+                  onChanged: (val) {
+                    BlocProvider.of<SignInBloc>(context).add(SignInChangedEvent(
+                        emailController.text, passwordController.text));
+                  },
                   decoration: InputDecoration(
                       hintText: 'Password',
                       fillColor: const Color(0xffF8F9FA),
@@ -116,33 +130,52 @@ class SignIn extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                const Text('Error will show up here', style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 12
-                ),),
-
+                BlocBuilder<SignInBloc, SignInState>(
+                  builder: (context, state) {
+                    if (state is SignInErrorState) {
+                      return Text(
+                        state.errorMessage,
+                        style: TextStyle(color: Colors.red, fontSize: 12),
+                      );
+                    } else {
+                      return Container();
+                    }
+                  },
+                ),
                 const SizedBox(
                   height: 250,
                 ),
-                InkWell(
-                  onTap: (){},
-                  child: Container(
-                    height: 50,
-                    width: 400,
-                    decoration: BoxDecoration(
-                        color: const Color(0xffF97038),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Center(
-                      child: Text(
-                        'Log In',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Rubik Regular',
-                          color: Colors.white,
+                BlocBuilder<SignInBloc, SignInState>(
+                  builder: (context, state) {
+                    return CupertinoButton(
+                      onPressed: () {
+                        if (state is SignInValidState) {
+                          BlocProvider.of<SignInBloc>(context).add(
+                              SignInSubmittedEvent(emailController.text,
+                                  passwordController.text));
+                        }
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 400,
+                        decoration: BoxDecoration(
+                            color: (state is SignInValidState)
+                                ? Colors.blue
+                                : Color(0xffF97038),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: const Center(
+                          child: Text(
+                            'Sign In',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontFamily: 'Rubik Regular',
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
+                    );
+                  },
                 ),
                 const SizedBox(
                   height: 15,
@@ -153,10 +186,12 @@ class SignIn extends StatelessWidget {
                     Text(
                       'Do not have an Account',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 16, fontFamily: 'Rubik Regular'),
+                      style:
+                          TextStyle(fontSize: 16, fontFamily: 'Rubik Regular'),
                     ),
-                    SizedBox(width: 8,),
+                    SizedBox(
+                      width: 8,
+                    ),
                     Text(
                       'Sign Up',
                       textAlign: TextAlign.center,

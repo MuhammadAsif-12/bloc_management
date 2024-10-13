@@ -1,5 +1,8 @@
 import 'package:bloc_management/screens/sign_in/sign_in_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../bloc/sign_in/sign_in_bloc.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -66,7 +69,10 @@ class WelcomePage extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => SignIn()),
+                      MaterialPageRoute(
+                          builder: (context) => BlocProvider(
+                              create: (context) => SignInBloc(),
+                              child: SignIn())),
                     );
                   },
                   child: Container(

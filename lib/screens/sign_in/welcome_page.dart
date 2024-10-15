@@ -96,26 +96,6 @@ class WelcomePage extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    height: 50,
-                    width: 400,
-                    decoration: BoxDecoration(
-                        color: Color(0xffF97038),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Center(
-                      child: Text(
-                        'Log In with Google',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Rubik Regular',
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
               ],
             ),
           ),

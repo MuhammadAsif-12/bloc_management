@@ -1,5 +1,6 @@
 import 'package:bloc_management/bloc/internet_bloc/internet_bloc.dart';
 import 'package:bloc_management/screens/home_screen.dart';
+import 'package:bloc_management/screens/phone_auth/phone_auth.dart';
 import 'package:bloc_management/screens/sign_in/sign_in_page.dart';
 import 'package:bloc_management/screens/sign_in/welcome_page.dart';
 import 'package:flutter/material.dart';
@@ -16,17 +17,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => InternetBloc(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: const WelcomePage(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
+      home: const PhoneAuthPage(),
     );
   }
 }

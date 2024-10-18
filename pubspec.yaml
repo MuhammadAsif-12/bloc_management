@@ -39,6 +39,8 @@ dependencies:
   connectivity: ^3.0.6
   connectivity_plus: ^6.0.5
   email_validator: ^3.0.0
+  dio: ^5.7.0
+  pretty_dio_logger: ^1.4.0
 
 dev_dependencies:
   flutter_test:

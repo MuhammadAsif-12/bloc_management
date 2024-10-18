@@ -7,7 +7,8 @@ class ApiHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child:  Text("Api Handling")),
+        centerTitle: true,
+        title: const Text("Api Handling"),
         backgroundColor: const Color(0xffF97038),
       ),
       backgroundColor: Colors.white,

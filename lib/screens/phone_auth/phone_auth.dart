@@ -107,6 +107,27 @@ class PhoneAuthPage extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
+                InkWell(
+                  onTap: () {
+                  },
+                  child: Container(
+                    height: 60,
+                    width: 400,
+                    decoration: const BoxDecoration(
+                      color: Color(0xffF97038),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Forget Password',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontFamily: 'Rubik Regular',
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
